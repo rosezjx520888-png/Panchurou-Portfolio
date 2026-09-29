@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>潘楚柔 · 作品集设计稿</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,650;1,9..144,380;1,9..144,500&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&family=Syne:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #f3eee4;
+      --paper-2: #e8e0d2;
+      --ink: #1a1613;
+      --muted: #6f675e;
+      --line: rgba(26, 22, 19, 0.12);
+      --accent: #b43328;
+      --gold: #b08948;
+      --radius: 500px;
+      --panel-w: 200px;
+      --panel-h: 280px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Noto Sans SC", "Syne", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 0;
+      opacity: 0.35;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+    }
+    .wrap { position: relative; z-index: 1; }
+
+    /* NAV */
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 48px 8px;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 10px;
+      font-family: Syne, sans-serif; font-weight: 700; letter-spacing: 0.18em;
+      font-size: 13px;
+    }
+    .brand-mark {
+      width: 18px; height: 18px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px;
+    }
+    .brand-mark i { background: var(--ink); display: block; }
+    .brand-mark i:nth-child(2) { background: var(--accent); }
+    .nav-links {
+      display: flex; gap: 22px; align-items: center;
+      font-family: "IBM Plex Mono", Syne, sans-serif; font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em;
+    }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; position: relative;
+    }
+    .nav-links a.active, .nav-links a:hover { color: var(--ink); }
+    .nav-links a.active::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -6px;
+      height: 1.5px; background: var(--accent);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      padding: 8px 48px 40px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+    .hero-top {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 24px;
+      padding-top: 10px; margin-bottom: 8px; position: relative; z-index: 2;
+    }
+    .kicker {
+      font-family: "IBM Plex Mono", Syne, sans-serif;
+      font-size: 12px; letter-spacing: 0.16em; color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-family: "Noto Serif SC", Fraunces, serif;
+      font-weight: 600;
+      font-size: clamp(42px, 6.2vw, 84px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+    .hero h1 em {
+      font-family: Fraunces, serif;
+      font-style: italic;
+      font-weight: 380;
+      color: var(--accent);
+    }
+    .profile {
+      width: 280px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.42);
+      backdrop-filter: blur(10px);
+      padding: 14px 16px;
+      display: flex; gap: 12px; align-items: center;
+    }
+    .avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: #d8cfc0;
+      display: grid; place-items: center;
+      font-family: Syne, sans-serif; font-weight: 700; font-size: 13px;
+    }
+    .profile b { display: block; font-size: 14px; }
+    .profile span { display: block; font-size: 11px; color: var(--muted); line-height: 1.45; margin-top: 2px; }
+
+    .stage {
+      position: relative;
+      height: 390px;
+      perspective: 1600px;
+      cursor: grab;
+      margin: 10px 0 0;
+    }
+    .stage:active { cursor: grabbing; }
+    .stage::before {
+      content: "";
+      position: absolute; inset: 8% 6% 12%;
+      background: radial-gradient(ellipse at center, rgba(26,22,19,0.06), transparent 68%);
+      pointer-events: none;
+    }
+    .reel {
+      width: 100%; height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.08s linear;
+    }
+    .panel {
+      position: absolute;
+      left: 50%; top: 62%;
+      width: var(--panel-w); height: var(--panel-h);
+      margin-left: calc(var(--panel-w) / -2);
+      margin-top: calc(var(--panel-h) / -2);
+      transform: rotateY(calc(var(--i) * 45deg)) translateZ(var(--radius));
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(26,22,19,0.18);
+      background: #ddd6c8;
+    }
+    .panel img, .panel .ph {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .panel .ph {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 16px;
+      color: #f6f0e6;
+    }
+    .ph.sea { background: linear-gradient(160deg, #1d3a52, #0e1c28 55%, #c45a2a); }
+    .ph.rent { background: linear-gradient(160deg, #e8d7b8, #c9a36a 50%, #5c4630); color: var(--ink); }
+    .ph.rate { background: linear-gradient(160deg, #2a211c, #111); }
+    .ph.bay { background: linear-gradient(160deg, #8f1e24, #d9a441); }
+    .panel figcaption {
+      position: absolute; left: 10px; bottom: 10px;
+      font-family: Syne, sans-serif; font-size: 10px; letter-spacing: 0.12em;
+      color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,.5);
+    }
+    .hint {
+      text-align: center;
+      font-size: 12px; color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    /* RESUME */
+    .section {
+      padding: 56px 48px 8px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .sec-head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 10px; margin-bottom: 22px;
+    }
+    .sec-head h2 {
+      font-family: "Noto Serif SC", serif; font-size: 28px; font-weight: 600;
+    }
+    .sec-head .idx {
+      font-family: "IBM Plex Mono", Syne, sans-serif; font-size: 12px; letter-spacing: 0.16em; color: var(--muted);
+    }
+    .resume-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.4fr 1fr;
+      gap: 28px;
+    }
+    .label {
+      font-family: Syne, sans-serif; font-size: 11px; letter-spacing: 0.16em;
+      color: var(--accent); margin-bottom: 8px;
+    }
+    .edu { font-size: 15px; line-height: 1.7; }
+    .interns { display: grid; gap: 10px; }
+    .intern {
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 8px; font-size: 14px;
+      padding-bottom: 8px; border-bottom: 1px solid var(--line);
+    }
+    .intern b { font-weight: 600; }
+    .intern span { color: var(--muted); font-size: 12px; }
+    .awards { display: flex; flex-direction: column; gap: 10px; }
+    .award {
+      border: 1px solid var(--line); padding: 12px 14px; background: rgba(255,255,255,.35);
+      font-size: 14px;
+    }
+
+    /* SKILL CHIPS */
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      padding: 36px 48px 12px;
+      max-width: 1280px; margin: 0 auto;
+    }
+    .skill {
+      text-align: left;
+      border: 1px solid var(--line);
+      background: transparent;
+      padding: 18px 16px 16px;
+      cursor: pointer;
+      font: inherit; color: inherit;
+      transition: border-color .2s, background .2s;
+    }
+    .skill:hover, .skill.active {
+      border-color: var(--ink);
+      background: rgba(255,255,255,.5);
+    }
+    .skill .n {
+      font-family: "IBM Plex Mono", Syne, sans-serif; font-size: 11px; letter-spacing: 0.16em; color: var(--accent);
+    }
+    .skill h3 {
+      font-family: "Noto Serif SC", serif; font-size: 20px; margin: 8px 0 6px; font-weight: 600;
+    }
+    .skill p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    /* WORK GRIDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .cards.three { grid-template-columns: repeat(3, 1fr); }
+    .cards.two { grid-template-columns: 1.2fr 0.8fr; }
+    .card {
+      background: rgba(255,255,255,.38);
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .thumb {
+      aspect-ratio: 16/10;
+      overflow: hidden; background: #ddd6c8; position: relative;
+    }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .card-body { padding: 14px 14px 16px; }
+    .card-body h3 { font-size: 16px; font-family: "Noto Serif SC", serif; margin-bottom: 6px; }
+    .card-body p { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+    .star {
+      display: grid; grid-template-columns: 16px 1fr; gap: 6px 8px;
+      margin-top: 10px; font-size: 12px; line-height: 1.45;
+    }
+    .star b { color: var(--accent); font-family: Syne, sans-serif; font-size: 11px; }
+    .btns { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+    .btn {
+      font-size: 12px; text-decoration: none; color: var(--ink);
+      border: 1px solid var(--ink); padding: 5px 10px;
+    }
+    .btn.ghost { border-color: var(--line); color: var(--muted); }
+
+    footer {
+      margin-top: 56px;
+      padding: 22px 48px 36px;
+      display: flex; justify-content: space-between;
+      border-top: 1px solid var(--ink);
+      font-size: 13px;
+    }
+    footer a { color: var(--ink); }
+
+    @media (max-width: 980px) {
+      .nav, .hero, .section, .skills, footer { padding-left: 20px; padding-right: 20px; }
+      .hero-top, .resume-grid, .skills, .cards, .cards.three, .cards.two {
+        grid-template-columns: 1fr;
+      }
+      .profile { width: 100%; }
+      .nav-links { display: none; }
+      :root { --radius: 340px; --panel-w: 160px; --panel-h: 230px; }
+      .stage { height: 320px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="nav">
+      <div class="brand">
+        <span class="brand-mark"><i></i><i></i><i></i></span>
+        PAN CHUROU
+      </div>
+      <nav class="nav-links">
+        <a class="active" href="#reel">001 REEL</a>
+        <a href="#resume">002 履历</a>
+        <a href="#ai">003 AI</a>
+        <a href="#video">004 影像</a>
+        <a href="#poster">005 平面</a>
+        <a href="#post">006 推文</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="reel">
+      <div class="hero-top">
+        <div>
+          <div class="kicker">001 — Cylinder reel</div>
+          <h1>全部作品，<em>in one turn</em></h1>
+        </div>
+        <aside class="profile">
+          <div class="avatar">柔</div>
+          <div>
+            <b>潘楚柔</b>
+            <span>内容运营 / 视觉与短视频 / AI 工具落地</span>
+          </div>
+        </aside>
+      </div>
+
+      <div class="stage" id="stage">
+        <div class="reel" id="reel3d">
+          <figure class="panel" style="--i:0"><img src="assets/github-cover.jpg" alt="GitHub" /><figcaption>001 GITHUB</figcaption></figure>
+          <figure class="panel" style="--i:1"><img src="assets/web-teacher-cover.jpg" alt="教师图谱" /><figcaption>002 教师图谱</figcaption></figure>
+          <figure class="panel" style="--i:2"><img src="assets/web-betterwork-cover.jpg" alt="BetterWork" /><figcaption>003 BETTERWORK</figcaption></figure>
+          <figure class="panel" style="--i:3"><div class="ph sea"><b>中国航海日</b><span>AI 作图 + 剪映</span></div><figcaption>004 AI 视频</figcaption></figure>
+          <figure class="panel" style="--i:4"><img src="assets/poster-recruit-banner.jpg" alt="招新海报" /><figcaption>005 招新海报</figcaption></figure>
+          <figure class="panel" style="--i:5"><img src="assets/poster-workshop.jpg" alt="工作坊海报" /><figcaption>006 表里如 E</figcaption></figure>
+          <figure class="panel" style="--i:6"><img src="assets/wechat-cover.jpg" alt="公众号" /><figcaption>007 电影周推文</figcaption></figure>
+          <figure class="panel" style="--i:7"><img src="assets/poster-flyer-front.jpg" alt="宣传单" /><figcaption>008 招新单页</figcaption></figure>
+        </div>
+      </div>
+      <p class="hint">拖动转盘查看作品 · 下方按分类展开</p>
+    </section>
+
+    <section class="section" id="resume">
+      <div class="sec-head">
+        <h2>履历速览</h2>
+        <span class="idx">002 / PROFILE</span>
+      </div>
+      <div class="resume-grid">
+        <div>
+          <div class="label">EDUCATION</div>
+          <div class="edu">华南师范大学<br>社会工作 · 2023.09–2027.06</div>
+        </div>
+        <div>
+          <div class="label">INTERNSHIPS</div>
+          <div class="interns">
+            <div class="intern"><div><b>深蓝互动</b> · 欧美生态运营<br><span>《重返未来：1999》国际服</span></div><span>2026.07–11</span></div>
+            <div class="intern"><div><b>三一公益探客教育</b> · 运营与传播</div><span>2026.03–06</span></div>
+            <div class="intern"><div><b>钛动</b> · KOL运营</div><span>2025.12–2026.03</span></div>
+            <div class="intern"><div><b>Wellcee</b> · 用户增长与社群</div><span>2025.07–10</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="label">AWARDS</div>
+          <div class="awards">
+            <div class="award">本科生优秀学生二等奖学金</div>
+            <div class="award">甘棠明善美食新概念营销大赛「优秀提案奖」<br><span style="color:var(--muted);font-size:12px">队长 / 主答辩</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="skills" id="skills">
+      <button class="skill active" data-target="ai"><span class="n">003</span><h3>AI 工具使用</h3><p>GitHub · Codex 网页 · AI 视频</p></button>
+      <button class="skill" data-target="video"><span class="n">004</span><h3>视频剪辑作品</h3><p>小红书 · 抖音 · 宣传片</p></button>
+      <button class="skill" data-target="poster"><span class="n">005</span><h3>海报作品</h3><p>招新套件 · 工作坊</p></button>
+      <button class="skill" data-target="post"><span class="n">006</span><h3>公众号推文</h3><p>电影周排版</p></button>
+    </div>
+
+    <section class="section" id="ai">
+      <div class="sec-head"><h2>AI 工具使用</h2><span class="idx">003 / TOOLS</span></div>
+      <div class="cards">
+        <article class="card">
+          <div class="thumb"><img src="assets/github-cover.jpg" alt=""></div>
+          <div class="card-body">
+            <h3>GitHub 主页</h3>
+            <p>先看仓库与 Codex 网页作品入口。</p>
+            <div class="btns"><a class="btn" href="https://github.com/rosezjx520888-png" target="_blank">打开 GitHub</a></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb"><img src="assets/web-teacher-cover.jpg" alt=""></div>
+          <div class="card-body">
+            <h3>探客教师遴选图谱</h3>
+            <p>Codex 网页，把静态评分表做成可交互散点图。</p>
+            <div class="star">
+              <b>S</b><span>静态表难看春秋教师能力/意愿分层</span>
+              <b>T</b><span>把 25春/25秋做成可交互散点图</span>
+              <b>A</b><span>筛选 / 搜索 / 表格 / 导出 + 分区</span>
+              <b>R</b><span>365 点位（197+168），用于复盘汇报</span>
+            </div>
+            <div class="btns"><a class="btn" href="https://rosezjx520888-png.github.io/sanyfoudation_teacher-scatter-plot/" target="_blank">打开网页</a></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb"><img src="assets/web-betterwork-cover.jpg" alt=""></div>
+          <div class="card-body">
+            <h3>BetterWork 工作台</h3>
+            <p>本地可运行的工作管理面板。</p>
+            <div class="star">
+              <b>S</b><span>多线工作散落聊天/文档</span>
+              <b>T</b><span>做可本地跑的工作面板</span>
+              <b>A</b><span>录入 / 看板 / 大纲三页</span>
+              <b>R</b><span>本地 + Pages 可打开</span>
+            </div>
+            <div class="btns"><a class="btn" href="https://rosezjx520888-png.github.io/Betterwork_work-management-board/" target="_blank">打开网页</a></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb"><div class="ph sea" style="height:100%"><b>中国航海日</b></div></div>
+          <div class="card-body">
+            <h3>AI 视频 · 中国航海日</h3>
+            <p>即梦作图 + 剪映，8 版脚本 / 15 个 AI 素材 / 约 1:28。</p>
+            <div class="btns"><a class="btn" href="https://weixin.qq.com/sph/ArrjY2Xpq9" target="_blank">视频号</a></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="video">
+      <div class="sec-head"><h2>视频剪辑作品</h2><span class="idx">004 / MOTION</span></div>
+      <div class="cards three">
+        <article class="card">
+          <div class="thumb"><div class="ph rent" style="height:100%"><b>穷鬼级广州租房攻略</b></div></div>
+          <div class="card-body">
+            <h3>Wellcee · 小红书</h3>
+            <p>租房攻略短视频，封面 + 平台外链。</p>
+            <div class="btns"><a class="btn" href="https://www.xiaohongshu.com/discovery/item/68a82986000000001d004a0a?source=webshare" target="_blank">小红书</a></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb"><div class="ph rate" style="height:100%"><b>租房平台锐评</b></div></div>
+          <div class="card-body">
+            <h3>Wellcee · 抖音</h3>
+            <p>从夯到拉五个等级，平台锐评。</p>
+            <div class="btns"><a class="btn" href="https://v.douyin.com/phwODnCj8bI/" target="_blank">抖音</a></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb"><div class="ph bay" style="height:100%"><b>六运会小区介绍</b></div></div>
+          <div class="card-body">
+            <h3>大湾区打 CALL 宣传片</h3>
+            <p>成片较大，可现场播放，不内嵌原片。</p>
+            <div class="btns"><span class="btn ghost">现场播放</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="poster">
+      <div class="sec-head"><h2>海报作品</h2><span class="idx">005 / PRINT</span></div>
+      <div class="cards two">
+        <article class="card">
+          <div class="thumb" style="aspect-ratio:16/8"><img src="assets/poster-recruit-banner.jpg" alt=""></div>
+          <div class="card-body">
+            <h3>义馆招募令 · 招新套件</h3>
+            <p>横版海报为封面，点开可看报名表正反、宣传单正反。</p>
+            <div class="btns"><span class="btn">灯箱预览</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb"><img src="assets/poster-workshop.jpg" alt="" style="object-position:top"></div>
+          <div class="card-body">
+            <h3>表里如「E」工作坊</h3>
+            <p>大学生网络 E 人现实社交困境工作坊海报。</p>
+            <div class="btns"><span class="btn">灯箱预览</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="post">
+      <div class="sec-head"><h2>公众号推文</h2><span class="idx">006 / EDITORIAL</span></div>
+      <div class="cards" style="grid-template-columns: 1fr 1.2fr;">
+        <article class="card">
+          <div class="thumb" style="aspect-ratio:4/3"><img src="assets/wechat-cover.jpg" alt=""></div>
+        </article>
+        <article class="card">
+          <div class="card-body" style="padding:28px">
+            <div class="label">WECHAT</div>
+            <h3 style="font-size:28px;margin:8px 0 12px">观影活动｜《罗小黑战记》</h3>
+            <p>影片投票驱动选题 + 推文排版与社群裂变。</p>
+            <div class="btns"><a class="btn" href="https://mp.weixin.qq.com/s/sX5RhY5O-mBa_VbTpXtceg" target="_blank">打开推文</a></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <div>潘楚柔 · 求职作品集设计稿 V1</div>
+      <div>
+        <a href="tel:13160999276">13160999276</a>
+        ·
+        <a href="mailto:1031234864@qq.com">1031234864@qq.com</a>
+        ·
+        <a href="https://github.com/rosezjx520888-png" target="_blank">GitHub</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const reel = document.getElementById("reel3d");
+    const stage = document.getElementById("stage");
+    let rot = -18, dragging = false, lastX = 0, vel = 0, auto = true;
+    function draw() { reel.style.transform = `rotateX(6deg) rotateY(${rot}deg)`; }
+    draw();
+    setInterval(() => { if (auto && !dragging) { rot -= 0.18; draw(); } }, 16);
+    stage.addEventListener("pointerdown", e => { dragging = true; auto = false; lastX = e.clientX; stage.setPointerCapture(e.pointerId); });
+    stage.addEventListener("pointermove", e => {
+      if (!dragging) return;
+      const dx = e.clientX - lastX;
+      rot += dx * 0.35;
+      lastX = e.clientX;
+      draw();
+    });
+    window.addEventListener("pointerup", () => { dragging = false; });
+
+    const skills = [...document.querySelectorAll(".skill")];
+    skills.forEach(btn => btn.addEventListener("click", () => {
+      skills.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      document.getElementById(btn.dataset.target).scrollIntoView({ behavior: "smooth", block: "start" });
+    }));
+
+    const nav = [...document.querySelectorAll(".nav-links a")];
+    const map = [
+      ["reel", 0], ["resume", 1], ["ai", 2], ["video", 3], ["poster", 4], ["post", 5]
+    ];
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        const idx = map.find(m => m[0] === en.target.id);
+        if (!idx) return;
+        nav.forEach(a => a.classList.remove("active"));
+        if (nav[idx[1]]) nav[idx[1]].classList.add("active");
+        if (["ai","video","poster","post"].includes(en.target.id)) {
+          skills.forEach(b => b.classList.toggle("active", b.dataset.target === en.target.id));
+        }
+      });
+    }, { rootMargin: "-40% 0px -45% 0px", threshold: 0.01 });
+    ["reel","resume","ai","video","poster","post"].forEach(id => io.observe(document.getElementById(id)));
+  </script>
+</body>
+</html>

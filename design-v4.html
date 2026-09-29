@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>潘楚柔 · 作品集设计稿</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #4d4650;
+    --muted: #8a8189;
+    --rose: #c9a4a8;
+    --berry: #a56b74;
+    --line: rgba(255,255,255,.55);
+    --glass: rgba(255,255,255,.38);
+    --glass-2: rgba(255,255,255,.52);
+    --max: 1160px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Noto Sans SC", sans-serif;
+    color: var(--ink);
+    min-height: 100%;
+    background:
+      radial-gradient(900px 520px at 8% -10%, rgba(226, 196, 198, .55), transparent 60%),
+      radial-gradient(800px 480px at 92% 8%, rgba(196, 214, 210, .55), transparent 62%),
+      radial-gradient(700px 420px at 70% 88%, rgba(214, 206, 186, .5), transparent 60%),
+      radial-gradient(640px 380px at 12% 78%, rgba(205, 214, 226, .5), transparent 58%),
+      #e7e2dc;
+    line-height: 1.55;
+  }
+  .page { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; padding: 18px 0 36px; }
+  a { color: inherit; }
+
+  .glass {
+    background: var(--glass);
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 30px rgba(120, 100, 110, .08), inset 0 1px 0 rgba(255,255,255,.7);
+    backdrop-filter: blur(18px) saturate(1.25);
+    -webkit-backdrop-filter: blur(18px) saturate(1.25);
+    border-radius: 22px;
+  }
+
+  header.top {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 18px;
+    margin-bottom: 18px;
+  }
+  .mark { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .18em; color: var(--muted); }
+  .mark i { color: var(--berry); font-style: normal; }
+  .contacts { display: flex; gap: 16px; font-family: "JetBrains Mono", monospace; font-size: 11px; }
+  .contacts a { text-decoration: none; }
+  .contacts a:hover { color: var(--berry); }
+
+  .hero {
+    padding: 42px 40px 36px;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: "Noto Serif SC", serif;
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 700;
+    line-height: .9;
+    letter-spacing: -.04em;
+    color: #5a4f57;
+  }
+  .role { margin-top: 16px; font-size: 16px; color: var(--muted); }
+  .role b { color: var(--ink); font-weight: 700; }
+
+  .resume {
+    display: grid;
+    grid-template-columns: .9fr 1.5fr .95fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .resume > div { padding: 18px 18px 16px; }
+  .k {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px; letter-spacing: .16em;
+    color: var(--berry);
+    margin-bottom: 10px;
+  }
+  .edu { font-size: 15px; }
+  .intern { display: grid; gap: 8px; }
+  .row {
+    display: grid; grid-template-columns: 1fr auto; gap: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,.45);
+    font-size: 14px;
+  }
+  .row:last-child { border-bottom: 0; padding-bottom: 0; }
+  .row span { color: var(--muted); font-family: "JetBrains Mono", monospace; font-size: 11px; }
+  .award { font-size: 14px; }
+  .award + .award { margin-top: 10px; }
+
+  .skills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 12px 0 8px; }
+  .skill {
+    text-align: left; cursor: pointer; font: inherit; color: inherit;
+    padding: 18px 16px;
+  }
+  .skill .n { display: block; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .14em; color: var(--muted); }
+  .skill h3 { font-family: "Noto Serif SC", serif; font-size: 20px; font-weight: 600; margin: 8px 0 6px; display: inline-block; }
+  .skill p { font-size: 12px; color: var(--muted); }
+  .skill.active, .skill:hover { background: var(--glass-2); }
+  .skill.active h3 { box-shadow: inset 0 -2px 0 var(--berry); }
+
+  section.block { padding: 28px 0 4px; }
+  .head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 14px; padding: 0 6px;
+  }
+  .head h2 { font-family: "Noto Serif SC", serif; font-size: 26px; font-weight: 600; }
+  .head em { font-family: "JetBrains Mono", monospace; font-style: normal; font-size: 11px; letter-spacing: .14em; color: var(--muted); }
+
+  .grid { display: grid; gap: 12px; }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g2 { grid-template-columns: 1.25fr .75fr; }
+  .g21 { grid-template-columns: .9fr 1.1fr; }
+
+  .work { overflow: hidden; display: flex; flex-direction: column; }
+  .thumb { aspect-ratio: 16/9; overflow: hidden; background: rgba(255,255,255,.25); }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .thumb.zoom { cursor: zoom-in; }
+  .plate {
+    width: 100%; height: 100%;
+    display: grid; place-items: end start;
+    padding: 14px;
+    color: #5a4f57;
+    font-family: "Noto Serif SC", serif;
+    font-size: 20px;
+  }
+  .p-sea { background: linear-gradient(160deg, rgba(180,196,204,.7), rgba(165,107,116,.45)); }
+  .p-xhs { background: linear-gradient(160deg, rgba(226,210,186,.8), rgba(196,164,168,.45)); }
+  .p-dy { background: linear-gradient(160deg, rgba(214,206,220,.75), rgba(90,79,87,.25)); }
+  .p-bay { background: linear-gradient(160deg, rgba(201,164,168,.55), rgba(214,206,186,.7)); }
+  .body { padding: 12px 14px 14px; }
+  .body h3 { font-size: 16px; font-family: "Noto Serif SC", serif; margin-bottom: 4px; }
+  .body p { font-size: 12.5px; color: var(--muted); }
+  .star { display: grid; grid-template-columns: 14px 1fr; gap: 3px 8px; margin-top: 8px; font-size: 11.5px; }
+  .star b { color: var(--berry); font-family: "JetBrains Mono", monospace; font-size: 10px; }
+  .btns { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  .btn {
+    font-size: 12px; text-decoration: none; cursor: pointer;
+    border: 1px solid rgba(255,255,255,.7);
+    background: rgba(255,255,255,.35);
+    padding: 4px 10px; border-radius: 999px; color: inherit;
+  }
+  .btn.ghost { color: var(--muted); }
+
+  footer.glass {
+    margin-top: 28px;
+    padding: 14px 18px;
+    display: flex; justify-content: space-between;
+    font-family: "JetBrains Mono", monospace; font-size: 11px;
+  }
+
+  .lb {
+    position: fixed; inset: 0; background: rgba(90,79,87,.28);
+    backdrop-filter: blur(10px);
+    display: none; place-items: center; z-index: 20; padding: 32px;
+  }
+  .lb.on { display: grid; }
+  .lb img { max-width: min(920px, 92vw); max-height: 88vh; border-radius: 16px; }
+  .lb button { position: absolute; top: 16px; right: 18px; background: none; border: 0; color: #5a4f57; font-size: 28px; cursor: pointer; }
+
+  @media (max-width: 900px) {
+    .hero { padding: 28px 22px; }
+    .resume, .skills, .g4, .g3, .g2, .g21 { grid-template-columns: 1fr; }
+    .contacts { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="top glass">
+    <div class="mark">PORTFOLIO <i>/</i> 2026</div>
+    <nav class="contacts">
+      <a href="https://github.com/rosezjx520888-png" target="_blank">GitHub</a>
+      <a href="tel:13160999276">13160999276</a>
+      <a href="mailto:1031234864@qq.com">1031234864@qq.com</a>
+    </nav>
+  </header>
+
+  <section class="hero glass" id="top">
+    <h1>潘楚柔</h1>
+    <p class="role"><b>内容运营</b> / 视觉与短视频 / AI 工具落地</p>
+  </section>
+
+  <section class="resume" id="resume">
+    <div class="glass">
+      <div class="k">EDUCATION</div>
+      <div class="edu">华南师范大学<br>社会工作 · 2023.09–2027.06</div>
+    </div>
+    <div class="glass">
+      <div class="k">INTERNSHIPS</div>
+      <div class="intern">
+        <div class="row"><div><b>深蓝互动</b> · 欧美生态运营<br>国际服《重返未来：1999》</div><span>2026.07–11</span></div>
+        <div class="row"><div><b>三一公益探客教育</b> · 运营与传播</div><span>2026.03–06</span></div>
+        <div class="row"><div><b>钛动</b> · KOL运营</div><span>2025.12–2026.03</span></div>
+        <div class="row"><div><b>Wellcee</b> · 用户增长与社群</div><span>2025.07–10</span></div>
+      </div>
+    </div>
+    <div class="glass">
+      <div class="k">AWARDS</div>
+      <div class="award">本科生优秀学生二等奖学金</div>
+      <div class="award">甘棠明善美食新概念营销大赛「优秀提案奖」<br><span style="color:var(--muted);font-size:12px">队长 / 主答辩</span></div>
+    </div>
+  </section>
+
+  <div class="skills" id="skills">
+    <button class="skill glass active" data-target="ai"><span class="n">01</span><h3>AI 工具使用</h3><p>GitHub · Codex 网页 · AI 视频</p></button>
+    <button class="skill glass" data-target="video"><span class="n">02</span><h3>视频剪辑作品</h3><p>小红书 · 抖音 · 宣传片</p></button>
+    <button class="skill glass" data-target="poster"><span class="n">03</span><h3>海报作品</h3><p>招新套件 · 工作坊</p></button>
+    <button class="skill glass" data-target="post"><span class="n">04</span><h3>公众号推文</h3><p>电影周排版</p></button>
+  </div>
+
+  <section class="block" id="ai">
+    <div class="head"><h2>AI 工具使用</h2><em>01 / TOOLS</em></div>
+    <div class="grid g4">
+      <article class="work glass">
+        <div class="thumb"><img src="assets/github-cover.jpg" alt=""></div>
+        <div class="body">
+          <h3>GitHub 主页</h3>
+          <p>仓库入口，先看 Codex 网页作品。</p>
+          <div class="btns"><a class="btn" href="https://github.com/rosezjx520888-png" target="_blank">打开 GitHub</a></div>
+        </div>
+      </article>
+      <article class="work glass">
+        <div class="thumb"><img src="assets/web-teacher-cover.jpg" alt=""></div>
+        <div class="body">
+          <h3>探客教师遴选图谱</h3>
+          <p>Codex 网页，把静态评分表做成可交互散点图。</p>
+          <div class="star">
+            <b>S</b><span>静态表难看春秋教师分层</span>
+            <b>T</b><span>做成 25春/25秋散点图</span>
+            <b>A</b><span>筛选 / 搜索 / 表格 / 导出</span>
+            <b>R</b><span>365 点位，用于复盘汇报</span>
+          </div>
+          <div class="btns"><a class="btn" href="https://rosezjx520888-png.github.io/sanyfoudation_teacher-scatter-plot/" target="_blank">打开网页</a></div>
+        </div>
+      </article>
+      <article class="work glass">
+        <div class="thumb"><img src="assets/web-betterwork-cover.jpg" alt=""></div>
+        <div class="body">
+          <h3>BetterWork 工作台</h3>
+          <p>本地可运行的工作管理面板。</p>
+          <div class="star">
+            <b>S</b><span>多线工作散落聊天/文档</span>
+            <b>T</b><span>做可本地跑的工作面板</span>
+            <b>A</b><span>录入 / 看板 / 大纲</span>
+            <b>R</b><span>本地 + Pages 可打开</span>
+          </div>
+          <div class="btns"><a class="btn" href="https://rosezjx520888-png.github.io/Betterwork_work-management-board/" target="_blank">打开网页</a></div>
+        </div>
+      </article>
+      <article class="work glass">
+        <div class="thumb"><div class="plate p-sea">中国航海日</div></div>
+        <div class="body">
+          <h3>AI 视频 · 中国航海日</h3>
+          <p>即梦作图 + 剪映，8 版脚本 / 15 个 AI 素材 / 约 1:28。</p>
+          <div class="btns"><a class="btn" href="https://weixin.qq.com/sph/ArrjY2Xpq9" target="_blank">视频号</a></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" id="video">
+    <div class="head"><h2>视频剪辑作品</h2><em>02 / MOTION</em></div>
+    <div class="grid g3">
+      <article class="work glass">
+        <a class="thumb" href="https://www.xiaohongshu.com/discovery/item/68a82986000000001d004a0a?source=webshare" target="_blank"><div class="plate p-xhs">穷鬼级广州租房攻略</div></a>
+        <div class="body">
+          <h3>Wellcee · 小红书</h3>
+          <p>租房攻略短视频，封面走平台外链。</p>
+          <div class="btns"><a class="btn" href="https://www.xiaohongshu.com/discovery/item/68a82986000000001d004a0a?source=webshare" target="_blank">小红书</a></div>
+        </div>
+      </article>
+      <article class="work glass">
+        <a class="thumb" href="https://v.douyin.com/phwODnCj8bI/" target="_blank"><div class="plate p-dy">租房平台锐评</div></a>
+        <div class="body">
+          <h3>Wellcee · 抖音</h3>
+          <p>从夯到拉五个等级，平台锐评。</p>
+          <div class="btns"><a class="btn" href="https://v.douyin.com/phwODnCj8bI/" target="_blank">抖音</a></div>
+        </div>
+      </article>
+      <article class="work glass">
+        <div class="thumb"><div class="plate p-bay">六运会小区介绍</div></div>
+        <div class="body">
+          <h3>大湾区打 CALL 宣传片</h3>
+          <p>成片较大，可现场播放，不内嵌原片。</p>
+          <div class="btns"><span class="btn ghost">现场播放</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" id="poster">
+    <div class="head"><h2>海报作品</h2><em>03 / PRINT</em></div>
+    <div class="grid g2">
+      <article class="work glass">
+        <div class="thumb zoom" data-full="assets/poster-recruit-banner.jpg"><img src="assets/poster-recruit-banner.jpg" alt=""></div>
+        <div class="body">
+          <h3>义馆招募令 · 招新套件</h3>
+          <p>横版海报为封面，点图可看报名表与宣传单。</p>
+          <div class="btns">
+            <button class="btn" data-full="assets/poster-recruit-banner.jpg" type="button">海报</button>
+            <button class="btn" data-full="assets/poster-form-front.jpg" type="button">报名表</button>
+            <button class="btn" data-full="assets/poster-flyer-front.jpg" type="button">宣传单</button>
+          </div>
+        </div>
+      </article>
+      <article class="work glass">
+        <div class="thumb zoom" data-full="assets/poster-workshop.jpg"><img src="assets/poster-workshop.jpg" alt="" style="object-position:top"></div>
+        <div class="body">
+          <h3>表里如「E」工作坊</h3>
+          <p>大学生网络 E 人现实社交困境工作坊海报。</p>
+          <div class="btns"><button class="btn" data-full="assets/poster-workshop.jpg" type="button">灯箱预览</button></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" id="post">
+    <div class="head"><h2>公众号推文</h2><em>04 / EDITORIAL</em></div>
+    <div class="grid g21">
+      <article class="work glass">
+        <div class="thumb"><img src="assets/wechat-cover.jpg" alt=""></div>
+      </article>
+      <article class="work glass">
+        <div class="body" style="padding:28px 22px">
+          <div class="k">WECHAT</div>
+          <h3 style="font-size:26px;margin:8px 0 10px">观影活动｜《罗小黑战记》</h3>
+          <p>影片投票驱动选题 + 推文排版与社群裂变。</p>
+          <div class="btns"><a class="btn" href="https://mp.weixin.qq.com/s/sX5RhY5O-mBa_VbTpXtceg" target="_blank">打开推文</a></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <footer class="glass">
+    <div>潘楚柔 · 求职作品集</div>
+    <div>GitHub · 13160999276 · 1031234864@qq.com</div>
+  </footer>
+</div>
+
+<div class="lb" id="lb"><button type="button" id="lbx">×</button><img alt=""></div>
+<script>
+const skills = [...document.querySelectorAll(".skill")];
+skills.forEach(btn => btn.addEventListener("click", () => {
+  document.getElementById(btn.dataset.target).scrollIntoView({behavior:"smooth", block:"start"});
+}));
+const map = {ai:0, video:1, poster:2, post:3};
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (!en.isIntersecting || !(en.target.id in map)) return;
+    skills.forEach(b => b.classList.remove("active"));
+    skills[map[en.target.id]].classList.add("active");
+  });
+}, {rootMargin:"-42% 0px -48% 0px", threshold:0.01});
+["ai","video","poster","post"].forEach(id => io.observe(document.getElementById(id)));
+const lb = document.getElementById("lb");
+const lbImg = lb.querySelector("img");
+document.querySelectorAll("[data-full]").forEach(el => {
+  el.addEventListener("click", () => { lbImg.src = el.dataset.full; lb.classList.add("on"); });
+});
+document.getElementById("lbx").onclick = () => lb.classList.remove("on");
+lb.addEventListener("click", e => { if (e.target === lb) lb.classList.remove("on"); });
+</script>
+</body>
+</html>

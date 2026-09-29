@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">National Games promo visual cover</title>
+  <desc id="desc">A warm sports field illustration with track lines, stadium lights and motion marks.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8f2d36"/><stop offset=".54" stop-color="#d95f4d"/><stop offset="1" stop-color="#f1b263"/></linearGradient>
+    <pattern id="grain" width="90" height="90" patternUnits="userSpaceOnUse"><circle cx="14" cy="28" r="2" fill="#fff" fill-opacity=".15"/><circle cx="66" cy="74" r="1.5" fill="#fff" fill-opacity=".12"/></pattern>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/><rect width="1600" height="1000" fill="url(#grain)"/>
+  <path d="M-160 1030C124 730 411 624 766 634c330 9 594 127 924 396" fill="none" stroke="#f8eee6" stroke-opacity=".7" stroke-width="24"/>
+  <path d="M-164 1110C123 816 419 722 764 731c341 9 604 130 934 386" fill="none" stroke="#f5cb85" stroke-opacity=".75" stroke-width="18"/>
+  <path d="M-152 1193C122 907 420 812 763 822c357 10 617 135 936 373" fill="none" stroke="#8f2d36" stroke-opacity=".8" stroke-width="15"/>
+  <g transform="translate(1090 118)">
+    <path d="M0 266 92 0l22 266M178 266 270 0l22 266M356 266 448 0l22 266" fill="none" stroke="#f8eee6" stroke-width="10"/>
+    <path d="M45 82h392M16 140h450" stroke="#f8eee6" stroke-width="5" stroke-opacity=".7"/>
+  </g>
+  <g fill="#f8eee6" opacity=".92"><circle cx="330" cy="275" r="12"/><circle cx="386" cy="254" r="8"/><circle cx="436" cy="294" r="10"/><circle cx="490" cy="258" r="7"/><circle cx="546" cy="302" r="11"/></g>
+  <text x="92" y="120" fill="#f8eee6" font-family="Arial, sans-serif" font-size="22" letter-spacing="7">CAMPAIGN / MOTION</text>
+  <text x="92" y="168" fill="#f5cb85" font-family="Arial, sans-serif" font-size="18" letter-spacing="4">THE NATIONAL GAMES 04</text>
+  <text x="92" y="455" fill="#f8eee6" font-family="Arial, sans-serif" font-size="74" font-weight="700" letter-spacing="1">MOVE TOGETHER</text>
+  <path d="M98 510h540" stroke="#f5cb85" stroke-width="4"/>
+  <text x="98" y="560" fill="#f8eee6" font-family="Arial, sans-serif" font-size="18" letter-spacing="4">A CITY IN MOTION</text>
+</svg>

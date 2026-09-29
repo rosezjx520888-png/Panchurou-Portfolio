@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>潘楚柔的作品集</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f3efe8;
+    --ink: #1b1512;
+    --muted: #6d655c;
+    --line: rgba(27,21,18,.14);
+    --red: #9b2332;
+    --max: 1180px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Noto Sans SC", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  body::before {
+    content: "";
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    opacity: .18;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .page { position: relative; z-index: 1; }
+  a { color: inherit; }
+  .wrap { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
+
+  header.top {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 0 16px;
+    border-bottom: 1px solid var(--ink);
+  }
+  .mark { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .2em; }
+  .mark i { color: var(--red); font-style: normal; }
+  .contacts { display: flex; gap: 18px; font-family: "JetBrains Mono", monospace; font-size: 11px; }
+  .contacts a { text-decoration: none; border-bottom: 1px solid transparent; }
+  .contacts a:hover { border-bottom-color: var(--red); color: var(--red); }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 40px;
+    padding: 32px 0 26px;
+    align-items: end;
+  }
+  .hero h1 {
+    font-family: "Noto Serif SC", serif;
+    font-size: clamp(40px, 6.2vw, 72px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -.04em;
+    text-wrap: balance;
+  }
+  .role { margin-top: 16px; font-size: 16px; color: var(--muted); }
+  .role b { color: var(--ink); font-weight: 700; }
+  .hero-shot {
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    border: 1px solid var(--ink);
+  }
+  .hero-shot img { width: 100%; height: 100%; object-fit: cover; object-position: center 18%; display: block; }
+
+  .intro {
+    padding: 18px 0 8px;
+    border-top: 1px solid var(--ink);
+  }
+  .intro .k { margin-bottom: 8px; }
+  .intro p { font-size: 15px; max-width: 820px; color: #3a342f; }
+
+  .k {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px; letter-spacing: .16em;
+    color: var(--red);
+  }
+  .facts {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 22px 36px;
+    padding: 18px 0 6px;
+  }
+  .facts h3 { font-family: "Noto Serif SC", serif; font-size: 18px; margin: 6px 0 8px; }
+  .edu { font-size: 15px; }
+  .list { display: grid; gap: 8px; }
+  .row {
+    display: grid; grid-template-columns: 1fr auto; gap: 8px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--line); font-size: 14px;
+  }
+  .row:last-child { border-bottom: 0; }
+  .row span { color: var(--muted); font-family: "JetBrains Mono", monospace; font-size: 11px; white-space: nowrap; }
+  .skills-list { font-size: 14px; display: grid; gap: 6px; }
+  .award { font-size: 14px; margin-bottom: 8px; }
+
+  .skills {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    border: 1px solid var(--ink); margin: 26px 0 8px;
+  }
+  .skill {
+    background: transparent; border: 0; border-right: 1px solid var(--ink);
+    padding: 18px 16px 16px; text-align: left; cursor: pointer; font: inherit; color: inherit;
+  }
+  .skill:last-child { border-right: 0; }
+  .skill .n { display: block; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .14em; color: var(--muted); }
+  .skill h3 { font-family: "Noto Serif SC", serif; font-size: 20px; font-weight: 600; margin: 8px 0 6px; display: inline-block; }
+  .skill p { font-size: 12px; color: var(--muted); }
+  .skill.active h3, .skill:hover h3 { box-shadow: inset 0 -2px 0 var(--red); }
+
+  section.block { padding: 34px 0 8px; }
+  .head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 1px solid var(--ink); padding-bottom: 8px; margin-bottom: 16px;
+  }
+  .head h2 { font-family: "Noto Serif SC", serif; font-size: 28px; font-weight: 600; }
+  .head em { font-family: "JetBrains Mono", monospace; font-style: normal; font-size: 11px; letter-spacing: .14em; color: var(--muted); }
+  .grid { display: grid; gap: 16px; }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g2 { grid-template-columns: 1.25fr .75fr; }
+  .g21 { grid-template-columns: .9fr 1.1fr; }
+  .work { background: #f8f5ef; border: 1px solid var(--line); display: flex; flex-direction: column; }
+  .thumb { aspect-ratio: 16/9; overflow: hidden; background: #ddd6c8; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .thumb.zoom { cursor: zoom-in; }
+  .plate { width: 100%; height: 100%; display: grid; place-items: end start; padding: 14px; color: #f6f1e8; font-family: "Noto Serif SC", serif; font-size: 22px; }
+  .p-sea { background: linear-gradient(160deg, #243040, #9b2332); }
+  .p-xhs { background: linear-gradient(160deg, #c9b496, #5c4632); color: var(--ink); }
+  .p-dy { background: #171411; }
+  .p-bay { background: linear-gradient(160deg, #7a1e24, #c4a15a); }
+  .body { padding: 12px 12px 14px; }
+  .body h3 { font-size: 16px; font-family: "Noto Serif SC", serif; margin-bottom: 4px; }
+  .body p { font-size: 12.5px; color: var(--muted); }
+  .star { display: grid; grid-template-columns: 14px 1fr; gap: 3px 8px; margin-top: 8px; font-size: 11.5px; }
+  .star b { color: var(--red); font-family: "JetBrains Mono", monospace; font-size: 10px; }
+  .btns { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  .btn { font-size: 12px; text-decoration: none; border: 1px solid var(--ink); padding: 4px 9px; background: transparent; cursor: pointer; font-family: inherit; color: inherit; }
+  .btn.ghost { border-color: var(--line); color: var(--muted); }
+  footer { margin-top: 40px; border-top: 1px solid var(--ink); padding: 16px 0 28px; display: flex; justify-content: space-between; font-family: "JetBrains Mono", monospace; font-size: 11px; }
+  .lb { position: fixed; inset: 0; background: rgba(27,21,18,.86); display: none; place-items: center; z-index: 20; padding: 32px; }
+  .lb.on { display: grid; }
+  .lb img { max-width: min(920px, 92vw); max-height: 88vh; }
+  .lb button { position: absolute; top: 16px; right: 18px; background: none; border: 0; color: #fff; font-size: 28px; cursor: pointer; }
+  @media (max-width: 900px) {
+    .wrap { width: calc(100% - 28px); }
+    .hero, .facts, .skills, .g4, .g3, .g2, .g21 { grid-template-columns: 1fr; }
+    .skill { border-right: 0; border-bottom: 1px solid var(--ink); }
+    .contacts { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="wrap">
+    <header class="top">
+      <div class="mark">PORTFOLIO <i>/</i> 2026</div>
+      <nav class="contacts">
+        <a href="https://github.com/rosezjx520888-png" target="_blank">GitHub</a>
+        <a href="tel:13160999276">13160999276</a>
+        <a href="mailto:1031234864@qq.com">1031234864@qq.com</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h1>潘楚柔的作品集</h1>
+        <p class="role"><b>内容运营</b> / 视觉与短视频 / AI 工具落地</p>
+      </div>
+      <figure class="hero-shot">
+        <img src="assets/portrait.jpg" alt="潘楚柔">
+      </figure>
+    </section>
+
+    <section class="intro" id="about">
+      <div class="k">ABOUT</div>
+      <p>华南师范大学社会工作在读。实习覆盖游戏海外生态、公益教育运营、KOL 与社群增长；同时用海报、短视频和 AI 工具把内容从策划做到落地。作品集按可打开的页面、成片和外链来展示，方便快速看我做过什么。</p>
+    </section>
+
+    <section class="facts" id="resume">
+      <div>
+        <div class="k">EDUCATION</div>
+        <h3>教育经历</h3>
+        <div class="edu">华南师范大学 · 社会工作<br>2023.09–2027.06</div>
+      </div>
+      <div>
+        <div class="k">INTERNSHIPS</div>
+        <h3>实习经历</h3>
+        <div class="list">
+          <div class="row"><div><b>深蓝互动</b> · 欧美生态运营 · 《重返未来：1999》国际服</div><span>2026.07–11</span></div>
+          <div class="row"><div><b>三一公益探客教育</b> · 运营与传播</div><span>2026.03–06</span></div>
+          <div class="row"><div><b>钛动</b> · KOL运营</div><span>2025.12–2026.03</span></div>
+          <div class="row"><div><b>Wellcee</b> · 用户增长与社群</div><span>2025.07–10</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="k">SKILLS</div>
+        <h3>个人技能</h3>
+        <div class="skills-list">
+          <div>视觉与内容：可画 / AI 作图 / 海报与社媒物料</div>
+          <div>视频：剪映专业版，策划到成片</div>
+          <div>协作：飞书 / 甘特图 / 项目推进</div>
+          <div>语言：英语六级</div>
+        </div>
+      </div>
+      <div>
+        <div class="k">AWARDS / CAMPUS</div>
+        <h3>获奖与学生工作</h3>
+        <div class="award">本科生优秀学生二等奖学金</div>
+        <div class="award">甘棠明善美食新概念营销大赛「优秀提案奖」（队长 / 主答辩）</div>
+        <div class="list" style="margin-top:10px">
+          <div class="row"><div><b>义馆中心</b> · 外联部部长 / 招新负责人</div><span>学生工作</span></div>
+          <div class="row"><div><b>电影周</b> · 活动运营与推文排版</div><span>2024.07–2025.07</span></div>
+          <div class="row"><div><b>新东方无忧教育</b> · 校园大使</div><span>学生工作</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="skills" id="skills">
+      <button class="skill active" data-target="ai"><span class="n">01</span><h3>AI 工具使用</h3><p>GitHub · Codex 网页 · AI 视频</p></button>
+      <button class="skill" data-target="video"><span class="n">02</span><h3>视频剪辑作品</h3><p>小红书 · 抖音 · 宣传片</p></button>
+      <button class="skill" data-target="poster"><span class="n">03</span><h3>海报作品</h3><p>招新套件 · 工作坊</p></button>
+      <button class="skill" data-target="post"><span class="n">04</span><h3>公众号推文</h3><p>电影周排版</p></button>
+    </div>
+
+    <section class="block" id="ai">
+      <div class="head"><h2>AI 工具使用</h2><em>01 / TOOLS</em></div>
+      <div class="grid g4">
+        <article class="work">
+          <div class="thumb"><img src="assets/github-cover.jpg" alt=""></div>
+          <div class="body">
+            <h3>GitHub 主页</h3>
+            <p>仓库入口，先看 Codex 网页作品。</p>
+            <div class="btns"><a class="btn" href="https://github.com/rosezjx520888-png" target="_blank">打开 GitHub</a></div>
+          </div>
+        </article>
+        <article class="work">
+          <div class="thumb"><img src="assets/web-teacher-cover.jpg" alt=""></div>
+          <div class="body">
+            <h3>探客教师遴选图谱</h3>
+            <p>Codex 网页，把静态评分表做成可交互散点图。</p>
+            <div class="star"><b>S</b><span>静态表难看春秋教师分层</span><b>T</b><span>做成 25春/25秋散点图</span><b>A</b><span>筛选 / 搜索 / 表格 / 导出</span><b>R</b><span>365 点位，用于复盘汇报</span></div>
+            <div class="btns"><a class="btn" href="https://rosezjx520888-png.github.io/sanyfoudation_teacher-scatter-plot/" target="_blank">打开网页</a></div>
+          </div>
+        </article>
+        <article class="work">
+          <div class="thumb"><img src="assets/web-betterwork-cover.jpg" alt=""></div>
+          <div class="body">
+            <h3>BetterWork 工作台</h3>
+            <p>本地可运行的工作管理面板。</p>
+            <div class="star"><b>S</b><span>多线工作散落聊天/文档</span><b>T</b><span>做可本地跑的工作面板</span><b>A</b><span>录入 / 看板 / 大纲</span><b>R</b><span>本地 + Pages 可打开</span></div>
+            <div class="btns"><a class="btn" href="https://rosezjx520888-png.github.io/Betterwork_work-management-board/" target="_blank">打开网页</a></div>
+          </div>
+        </article>
+        <article class="work">
+          <div class="thumb"><div class="plate p-sea">中国航海日</div></div>
+          <div class="body">
+            <h3>AI 视频 · 中国航海日</h3>
+            <p>即梦作图 + 剪映，8 版脚本 / 15 个 AI 素材 / 约 1:28。</p>
+            <div class="btns"><a class="btn" href="https://weixin.qq.com/sph/ArrjY2Xpq9" target="_blank">视频号</a></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" id="video">
+      <div class="head"><h2>视频剪辑作品</h2><em>02 / MOTION</em></div>
+      <div class="grid g3">
+        <article class="work">
+          <a class="thumb" href="https://www.xiaohongshu.com/discovery/item/68a82986000000001d004a0a?source=webshare" target="_blank"><div class="plate p-xhs">穷鬼级广州租房攻略</div></a>
+          <div class="body"><h3>Wellcee · 小红书</h3><p>租房攻略短视频，封面走平台外链。</p><div class="btns"><a class="btn" href="https://www.xiaohongshu.com/discovery/item/68a82986000000001d004a0a?source=webshare" target="_blank">小红书</a></div></div>
+        </article>
+        <article class="work">
+          <a class="thumb" href="https://v.douyin.com/phwODnCj8bI/" target="_blank"><div class="plate p-dy">租房平台锐评</div></a>
+          <div class="body"><h3>Wellcee · 抖音</h3><p>从夯到拉五个等级，平台锐评。</p><div class="btns"><a class="btn" href="https://v.douyin.com/phwODnCj8bI/" target="_blank">抖音</a></div></div>
+        </article>
+        <article class="work">
+          <div class="thumb"><div class="plate p-bay">六运会小区介绍</div></div>
+          <div class="body"><h3>大湾区打 CALL 宣传片</h3><p>成片较大，可现场播放，不内嵌原片。</p><div class="btns"><span class="btn ghost">现场播放</span></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" id="poster">
+      <div class="head"><h2>海报作品</h2><em>03 / PRINT</em></div>
+      <div class="grid g2">
+        <article class="work">
+          <div class="thumb zoom" data-full="assets/poster-recruit-banner.jpg"><img src="assets/poster-recruit-banner.jpg" alt=""></div>
+          <div class="body">
+            <h3>义馆招募令 · 招新套件</h3>
+            <p>横版海报为封面，点图可看报名表与宣传单。</p>
+            <div class="btns">
+              <button class="btn" data-full="assets/poster-recruit-banner.jpg" type="button">海报</button>
+              <button class="btn" data-full="assets/poster-form-front.jpg" type="button">报名表</button>
+              <button class="btn" data-full="assets/poster-flyer-front.jpg" type="button">宣传单</button>
+            </div>
+          </div>
+        </article>
+        <article class="work">
+          <div class="thumb zoom" data-full="assets/poster-workshop.jpg"><img src="assets/poster-workshop.jpg" alt="" style="object-position:top"></div>
+          <div class="body"><h3>表里如「E」工作坊</h3><p>大学生网络 E 人现实社交困境工作坊海报。</p><div class="btns"><button class="btn" data-full="assets/poster-workshop.jpg" type="button">灯箱预览</button></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" id="post">
+      <div class="head"><h2>公众号推文</h2><em>04 / EDITORIAL</em></div>
+      <div class="grid g21">
+        <article class="work"><div class="thumb"><img src="assets/wechat-cover.jpg" alt=""></div></article>
+        <article class="work">
+          <div class="body" style="padding:28px 22px">
+            <div class="k">WECHAT</div>
+            <h3 style="font-size:26px;margin:8px 0 10px">观影活动｜《罗小黑战记》</h3>
+            <p>影片投票驱动选题 + 推文排版与社群裂变。</p>
+            <div class="btns"><a class="btn" href="https://mp.weixin.qq.com/s/sX5RhY5O-mBa_VbTpXtceg" target="_blank">打开推文</a></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <div>潘楚柔的作品集</div>
+      <div>GitHub · 13160999276 · 1031234864@qq.com</div>
+    </footer>
+  </div>
+</div>
+<div class="lb" id="lb"><button type="button" id="lbx">×</button><img alt=""></div>
+<script>
+const skills = [...document.querySelectorAll(".skill")];
+skills.forEach(btn => btn.addEventListener("click", () => {
+  document.getElementById(btn.dataset.target).scrollIntoView({behavior:"smooth", block:"start"});
+}));
+const map = {ai:0, video:1, poster:2, post:3};
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (!en.isIntersecting || !(en.target.id in map)) return;
+    skills.forEach(b => b.classList.remove("active"));
+    skills[map[en.target.id]].classList.add("active");
+  });
+}, {rootMargin:"-42% 0px -48% 0px", threshold:0.01});
+["ai","video","poster","post"].forEach(id => io.observe(document.getElementById(id)));
+const lb = document.getElementById("lb");
+const lbImg = lb.querySelector("img");
+document.querySelectorAll("[data-full]").forEach(el => {
+  el.addEventListener("click", () => { lbImg.src = el.dataset.full; lb.classList.add("on"); });
+});
+document.getElementById("lbx").onclick = () => lb.classList.remove("on");
+lb.addEventListener("click", e => { if (e.target === lb) lb.classList.remove("on"); });
+</script>
+</body>
+</html>

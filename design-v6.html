@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>潘楚柔作品集 · 视觉方向 粉山白衿</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --silk: #FBF6F1;
+    --paper: #FFFCF8;
+    --ink: #1C1614;
+    --muted: #6E5F57;
+    --magenta: #E13B78;
+    --magenta-deep: #B81E54;
+    --magenta-mist: #F4C7D6;
+    --piping: #C42B3A;
+    --garden: #355744;
+    --peach: #E8B09A;
+    --gold: #C9A46C;
+    --line: rgba(28,22,20,.12);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #e8dfd6;
+    color: var(--ink);
+    font-family: "Noto Sans SC", sans-serif;
+    padding: 48px 32px 80px;
+  }
+  .sheet {
+    width: min(1440px, 100%);
+    margin: 0 auto;
+    background: var(--silk);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 40px 80px rgba(28,22,20,.12);
+  }
+  .meta {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 22px 36px 16px;
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+  }
+  .meta h1 {
+    font-family: "Noto Serif SC", serif;
+    font-size: 22px; font-weight: 700;
+  }
+  .meta p {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 18px; font-style: italic; color: var(--muted);
+  }
+  .palette {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 0;
+  }
+  .swatch { min-height: 92px; padding: 12px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .swatch b { font-size: 12px; }
+  .swatch span { font-family: "Cormorant Garamond", serif; font-size: 13px; opacity: .8; }
+  .on-dark { color: #fff; }
+  .board {
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    min-height: 820px;
+  }
+  .copy {
+    padding: 56px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .copy svg.mountains {
+    position: absolute; left: -8%; bottom: -6%; width: 120%; height: 46%;
+    opacity: .22; pointer-events: none;
+  }
+  .eyebrow {
+    font-family: "Cormorant Garamond", serif;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: var(--magenta-deep);
+  }
+  .copy h2 {
+    font-family: "Noto Serif SC", serif;
+    font-size: 72px;
+    line-height: .95;
+    letter-spacing: -.04em;
+    margin: 18px 0 8px;
+    font-weight: 700;
+  }
+  .copy h2 em {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 42px;
+    color: var(--magenta);
+    display: block;
+    margin-top: 6px;
+    letter-spacing: 0;
+  }
+  .lede {
+    max-width: 460px;
+    font-size: 15px;
+    line-height: 1.75;
+    color: #4a3f39;
+    margin: 22px 0 28px;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; max-width: 480px; }
+  .chip {
+    border: 1px solid rgba(225,59,120,.35);
+    color: var(--magenta-deep);
+    background: rgba(255,255,255,.55);
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 999px;
+  }
+  .wall {
+    background:
+      linear-gradient(180deg, rgba(232,176,154,.35), rgba(53,87,68,.18)),
+      #d9c4b4;
+    display: grid;
+    place-items: center;
+    position: relative;
+  }
+  .gate {
+    width: min(78%, 420px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 14px solid #fffaf6;
+    box-shadow: 0 28px 70px rgba(184,30,84,.22);
+    position: relative;
+  }
+  .gate img { width: 100%; height: 100%; object-fit: cover; object-position: center 12%; }
+  .gate::after {
+    content: "";
+    position: absolute; inset: auto 0 0; height: 42%;
+    background: linear-gradient(to top, rgba(225,59,120,.28), transparent);
+  }
+  .caption {
+    position: absolute; bottom: 28px; right: 28px;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    color: #3a2c28;
+    background: rgba(255,252,248,.78);
+    padding: 6px 12px;
+  }
+  .notes {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr .8fr;
+    gap: 1px;
+    background: var(--line);
+    border-top: 1px solid var(--line);
+  }
+  .note { background: var(--paper); padding: 28px 32px 32px; }
+  .note h3 {
+    font-family: "Noto Serif SC", serif;
+    font-size: 18px; margin-bottom: 8px;
+  }
+  .note p { font-size: 13px; line-height: 1.7; color: var(--muted); }
+</style>
+</head>
+<body>
+  <article class="sheet">
+    <header class="meta">
+      <h1>网页设计图 · 潘楚柔的作品集</h1>
+      <p>Visual direction — Silk Mountain / 粉山白衿</p>
+    </header>
+    <div class="palette">
+      <div class="swatch" style="background:#FBF6F1"><b>Silk</b><span>#FBF6F1</span></div>
+      <div class="swatch" style="background:#FFFCF8"><b>Paper</b><span>#FFFCF8</span></div>
+      <div class="swatch on-dark" style="background:#E13B78"><b>Magenta</b><span>#E13B78</span></div>
+      <div class="swatch on-dark" style="background:#B81E54"><b>Deep</b><span>#B81E54</span></div>
+      <div class="swatch on-dark" style="background:#C42B3A"><b>Piping</b><span>#C42B3A</span></div>
+      <div class="swatch on-dark" style="background:#355744"><b>Garden</b><span>#355744</span></div>
+      <div class="swatch" style="background:#E8B09A"><b>Peach</b><span>#E8B09A</span></div>
+      <div class="swatch" style="background:#C9A46C"><b>Gold</b><span>#C9A46C</span></div>
+    </div>
+    <div class="board">
+      <div class="copy">
+        <svg class="mountains" viewBox="0 0 900 320" preserveAspectRatio="none" aria-hidden="true">
+          <path fill="#E13B78" d="M0 320L0 230C70 210 110 150 190 168C270 186 310 110 400 128C500 148 540 70 630 92C720 114 760 180 900 150L900 320Z"/>
+          <path fill="#B81E54" d="M0 320L0 260C90 240 140 200 220 214C320 232 360 180 450 196C560 216 620 150 720 170C800 186 850 230 900 210L900 320Z"/>
+        </svg>
+        <div class="eyebrow">Portfolio  ·  2026</div>
+        <h2>潘楚柔<em>的作品集</em></h2>
+        <p class="lede">从白旗袍上的粉山取色：丝绸底、品红远山、园林绿与桃石阶。主视觉用月洞门框住肖像，作品分区按 AI 工具 / 视频 / 海报 / 推文展开。</p>
+        <div class="chips">
+          <span class="chip">视觉设计</span>
+          <span class="chip">内容策划</span>
+          <span class="chip">视频剪辑</span>
+          <span class="chip">AI 绘画</span>
+          <span class="chip">AI 视频</span>
+          <span class="chip">Vibe Coding</span>
+          <span class="chip">Codex</span>
+          <span class="chip">账号运营</span>
+        </div>
+      </div>
+      <div class="wall">
+        <div class="gate"><img src="assets/portrait.jpg" alt="潘楚柔" /></div>
+        <div class="caption">moon gate · 园林取景</div>
+      </div>
+    </div>
+    <div class="notes">
+      <div class="note">
+        <h3>版式</h3>
+        <p>首屏左右对开，左文右像。标题用宋体巨号字，英文衬线斜体作第二行。作品区用杂志分栏，Codex 两页用 STAR 长卡片，海报可灯箱放大。</p>
+      </div>
+      <div class="note">
+        <h3>字体</h3>
+        <p>中文标题 Noto Serif SC；英文 Cormorant Garamond；正文 Noto Sans SC。不用 Inter / 系统默认无衬线作为主视觉。</p>
+      </div>
+      <div class="note">
+        <h3>动效</h3>
+        <p>入场错落淡入，粉山轻轻上移。导航与技能标签滚动高亮。海报点击灯箱。克制、丝绸感，不做霓虹渐变。</p>
+      </div>
+    </div>
+  </article>
+</body>
+</html>

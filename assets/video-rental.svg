@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Guangzhou rental guide visual cover</title>
+  <desc id="desc">An editorial city block illustration with apartment windows and a rental route.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#f0c5bb"/><stop offset=".45" stop-color="#d95f4d"/><stop offset="1" stop-color="#243b3b"/>
+    </linearGradient>
+    <pattern id="windows" width="90" height="92" patternUnits="userSpaceOnUse">
+      <rect width="90" height="92" fill="#1c3537"/>
+      <rect x="13" y="14" width="26" height="33" fill="#f6d99f"/>
+      <rect x="51" y="14" width="26" height="33" fill="#f0a185"/>
+      <rect x="13" y="58" width="26" height="23" fill="#d7ece2"/>
+      <rect x="51" y="58" width="26" height="23" fill="#f0c5bb"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <path d="M0 796 280 610l230 94 198-238 280 154 244-238 368 180V1000H0Z" fill="#183535" fill-opacity=".8"/>
+  <g transform="translate(96 190)">
+    <path d="M0 700V72h328v628" fill="url(#windows)" stroke="#f7e9df" stroke-width="8"/>
+    <path d="M330 700V0h386v700" fill="url(#windows)" stroke="#f7e9df" stroke-width="8"/>
+    <path d="M718 700V154h270v546" fill="url(#windows)" stroke="#f7e9df" stroke-width="8"/>
+  </g>
+  <path d="M110 824C340 730 434 875 630 794s270-166 498-92 230 38 360-60" fill="none" stroke="#f0c5bb" stroke-width="10" stroke-linecap="round" stroke-dasharray="18 24"/>
+  <circle cx="110" cy="824" r="19" fill="#f0c5bb"/><circle cx="630" cy="794" r="19" fill="#f0c5bb"/><circle cx="1488" cy="642" r="19" fill="#f0c5bb"/>
+  <g transform="translate(1080 168)">
+    <rect width="390" height="250" fill="#f7eee6" fill-opacity=".94"/>
+    <text x="30" y="54" fill="#183535" font-family="Arial, sans-serif" font-size="18" letter-spacing="5">GUANGZHOU / RENTAL</text>
+    <text x="30" y="111" fill="#d95f4d" font-family="Arial, sans-serif" font-size="44" font-weight="700">500+</text>
+    <text x="30" y="150" fill="#183535" font-family="Arial, sans-serif" font-size="17" letter-spacing="2">LIKES FROM ONE GUIDE</text>
+    <path d="M30 184h320" stroke="#d95f4d" stroke-width="3"/>
+    <text x="30" y="218" fill="#183535" font-family="Arial, sans-serif" font-size="15" letter-spacing="2">REAL PEOPLE · REAL ROOMS</text>
+  </g>
+  <text x="92" y="103" fill="#f8eee6" font-family="Arial, sans-serif" font-size="22" letter-spacing="7">SOCIAL / FIELD NOTES</text>
+  <text x="92" y="148" fill="#f0c5bb" font-family="Arial, sans-serif" font-size="18" letter-spacing="4">GUANGZHOU 02</text>
+</svg>
